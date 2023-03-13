@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getContacts, getIsLoading, getError } from 'redux/selectors';
+import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
@@ -12,9 +12,9 @@ import { SpinnerMutatingDots } from './Spinner/Spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());

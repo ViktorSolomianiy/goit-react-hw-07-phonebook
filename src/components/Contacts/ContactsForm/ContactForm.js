@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getIsAddingContact } from 'redux/selectors';
+import { selectContacts, selectIsAddingContact } from 'redux/selectors';
 import toast from 'react-hot-toast';
 import './ContactForm.css';
 
@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const ContactsForm = () => {
   const dispatch = useDispatch();
-  const isAddingContact = useSelector(getIsAddingContact);
-  const contacts = useSelector(getContacts);
+  const isAddingContact = useSelector(selectIsAddingContact);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
