@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import './ContactsList.css';
 
-import { ContactsItems } from '../ContactsItems/ContactsItems';
+import { ContactsItems } from '../ContactsItem/ContactsItem';
 
 export const ContactsList = () => {
   const contacts = useSelector(state => {
@@ -15,7 +15,9 @@ export const ContactsList = () => {
 
   return (
     <ul className="contacts__list">
-      <ContactsItems contacts={contacts} />
+      {contacts.map(contact => (
+        <ContactsItems contact={contact} key={contact.id} />
+      ))}
     </ul>
   );
 };

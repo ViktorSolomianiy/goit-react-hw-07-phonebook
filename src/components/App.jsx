@@ -7,7 +7,7 @@ import './App.css';
 
 import { ContactsForm } from './Contacts/ContactsForm/ContactForm';
 import { Filter } from './Filter/Filter';
-import { ContactsList } from './Contacts/ContactsList/ContactsList';
+import { ContactsList } from './Contacts/ContactsList/ContactsList/ContactsList';
 import { SpinnerMutatingDots } from './Spinner/Spinner';
 
 export const App = () => {

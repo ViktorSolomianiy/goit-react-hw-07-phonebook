@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoading, getContacts } from 'redux/selectors';
+import { getContacts, getIsAddingContact } from 'redux/selectors';
 import toast from 'react-hot-toast';
 import './ContactForm.css';
 
@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const ContactsForm = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isAddingContact = useSelector(getIsAddingContact);
   const contacts = useSelector(getContacts);
 
   const handleSubmit = e => {
@@ -18,11 +18,11 @@ export const ContactsForm = () => {
     const name = form.elements.name.value;
     const phone = form.elements.number.value;
 
-    dispatch(addContact({ name, phone }));
-
     if (contacts.find(contact => contact.name === name)) {
       return toast.error(`${name} is already in the list`);
     }
+
+    dispatch(addContact({ name, phone }));
 
     toast.success(`${name} is added to the contact list!`);
 
@@ -52,8 +52,8 @@ export const ContactsForm = () => {
           required
         />
 
-        <button className="form__btn" type="submit" disabled={isLoading}>
-          {isLoading ? <SpinnerBorder /> : 'Add contacts'}
+        <button className="form__btn" type="submit" disabled={isAddingContact}>
+          {isAddingContact ? <SpinnerBorder /> : 'Add contacts'}
         </button>
       </form>
     </>
